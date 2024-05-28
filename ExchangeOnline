@@ -1,0 +1,18 @@
+Setting: Hybrid Environment
+User Mailboxes are Migrated to Exchange Online.
+Everything is Working except the booking of rroms etc.
+The reason is that The Mailbox Flag ProcessExternalMeetingMessages is set to false.
+After Settings the flag to true Bookings are working as expected.
+
+To check if the flag is set to false:
+Get-CalendarProcessing MettingRoom | FL *
+
+To set the flag:
+Set-CalendarProcessing MettingRoom -ProcessExternalMeetingMessages $true
+
+See also:
+https://community.spiceworks.com/t/hybrid-exchange-room-snafu/739563/5
+
+After the Migration:
+You should Disable the Flag after the Migration was successfull
+Otherwise Bookingsmessages from External are possible ( forever )
