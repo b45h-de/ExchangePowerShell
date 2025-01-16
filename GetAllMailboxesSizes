@@ -1,0 +1,2 @@
+Get-Mailbox -ResultSize Unlimited -RecipientTypeDetails UserMailbox | Get-MailboxStatistics | Sort-Object -Property TotalItemSize -Descending |
+Select DisplayName, @{n="Total Size (MB)";e={[math]::Round(($_.TotalItemSize.ToString().Split("(")[1].Split(" ")[0].Replace(",","")/1MB),2)}}, StorageLimitStatus
